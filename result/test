@@ -1,0 +1,11 @@
+===Test1
+classOfLOS = [0, 5,10,15,28]
+
+Overall accuracy:  0.5382995525138194
+class[ 0 ] accuracy:  0.6187739463601533
+class[ 1 ] accuracy:  0.6155187445510026
+class[ 2 ] accuracy:  0.13616071428571427
+class[ 3 ] accuracy:  0.467005076142132
+class[ 4 ] accuracy:  0.5122950819672131
+Overall accuracy:  0.5382995525138194
+===
