@@ -1,11 +1,45 @@
-===Test1
-classOfLOS = [0, 5,10,15,28]
+start = ADMISSION_TYPE
+end = icu_LOS
+feature importance:  [ 0.0159768   0.03707544  0.08168483  0.02778085  0.04484516  0.01649404  0.23289708  0.06799977  0.47524604]
 
-Overall accuracy:  0.5382995525138194
+classOfLOS = [0, 5,10,15,28]
+classOfLOSNum:  [15654, 11463, 4480, 3933, 2437]
+===Test1 - SVm
 class[ 0 ] accuracy:  0.6187739463601533
 class[ 1 ] accuracy:  0.6155187445510026
 class[ 2 ] accuracy:  0.13616071428571427
 class[ 3 ] accuracy:  0.467005076142132
 class[ 4 ] accuracy:  0.5122950819672131
 Overall accuracy:  0.5382995525138194
-===
+
+===Test - MLP
+class[ 0 ] accuracy:  0.0
+class[ 1 ] accuracy:  0.0
+class[ 2 ] accuracy:  1.0
+class[ 3 ] accuracy:  0.0
+class[ 4 ] accuracy:  0.0
+class[ 5 ] accuracy:  0.0
+Overall accuracy:  0.30192155830481704
+
+===Test - NN
+Accuracy: 0.41221374
+
+classOfLOS = [0, 3, 5, 10, 20, 40]
+classOfLOSNum:  [7776, 7878, 11463, 6627, 2945, 1278]
+=== Test1 - SVM
+class[ 0 ] accuracy:  0.1953727506426735
+class[ 1 ] accuracy:  0.01903553299492386
+class[ 2 ] accuracy:  0.7933740191804708
+class[ 3 ] accuracy:  0.44042232277526394
+class[ 4 ] accuracy:  0.39661016949152544
+class[ 5 ] accuracy:  0.5234375
+Overall accuracy:  0.40879178731245064
+
+===Test2 - MLP
+class[ 0 ] accuracy:  0.0
+class[ 1 ] accuracy:  0.0
+class[ 2 ] accuracy:  1.0
+class[ 3 ] accuracy:  0.0
+class[ 4 ] accuracy:  0.0
+class[ 5 ] accuracy:  0.0
+Overall accuracy:  0.30192155830481704
