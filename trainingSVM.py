@@ -121,12 +121,13 @@ def combined_SVM_SVR (X, features_class, features_regr, LOS_pos, classOfLOS, tes
     clf = svm.SVC()
     clf.fit(X_train_class, y_train_class)
     class_prediction = clf.predict(X_test_class)
-    test.test_simple(y_test_class, class_prediction)
+    test.test_simple(y_test_class, class_prediction, len(classOfLOS))
+    pickle.dump(clf, open("model/svm_model", 'wb'))
 
     print("===SVR")
     prediction = np.empty((0))
     y_test_rearrange = np.empty((0))
-    for i in range(len(classOfLOS)):
+    for i in range(len(classOfLOS)-1):
         print("SVR training set", i)
         indices = []
         for j in range(len(y_train_class)):
@@ -142,6 +143,8 @@ def combined_SVM_SVR (X, features_class, features_regr, LOS_pos, classOfLOS, tes
         y_test_sub = np.array(y_test[indices])
         clf = svm.SVR()
         clf.fit(X_train_sub, y_train_sub)
+        fname = "model/svr_model_" + str(i)
+        pickle.dump(clf, open(fname, 'wb'))
         cross_validation(X_train_sub, y_train_sub, 3)
         regression_pred = clf.predict(X_test_sub)
         prediction = np.append(prediction, regression_pred)
@@ -150,10 +153,9 @@ def combined_SVM_SVR (X, features_class, features_regr, LOS_pos, classOfLOS, tes
         test.testSVR(regression_pred, y_test_sub)
         plot.plot_map(y_test_sub, regression_pred, "y_test", "prediction", "regression subset")
 
+    print("Overall:")
     test.testSVR(prediction, y_test_rearrange)
     plot.plot_map(y_test_rearrange, prediction, "y_test", "prediction", "final regression result")
-
-
 
 def cross_validation(X, y, kfold):
     kf = KFold(n_splits=kfold, shuffle=True)

@@ -33,10 +33,19 @@ def testSVR(prediction, y_test):
     print("MSE: ", MSE)
     print("R_square: ", R_square)
 
-def test_simple(y_test, prediction):
+
+def test_simple(y_test, prediction, class_num):
     correct = 0
-    for i in range(len(y_test)):
-        if y_test[i] == prediction[i]:
-            correct += 1
+    for i in range(class_num):
+        num = 0
+        cor = 0
+        for j in range(len(y_test)):
+            if y_test[j] == i:
+                num += 1
+                if prediction[j] == i:
+                    cor += 1
+        print("class",i,"accuracy:", cor / num)
+        correct += cor
+
     print("Test accuracy:", correct/len(y_test))
 

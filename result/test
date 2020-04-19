@@ -497,29 +497,41 @@ MSE:  4.173129713203127
 R_square:  0.8742199630090913
 MSE:  76.24852380120605
 R_square:  0.997176426292705
-SVR training set 1
-k = 0
-MSE:  22.864065207096452
-R_square:  0.4408770098127688
-k = 1
-MSE:  22.250063333029768
-R_square:  0.4378764683780719
-k = 2
-MSE:  22.708568566335966
-R_square:  0.44900974672537897
-MSE:  172.18788660945577
-R_square:  0.9895771471067795
-SVR training set 2
-k = 0
-MSE:  299.5695602807903
-R_square:  0.980022963468483
-k = 1
-MSE:  297.00220461902546
-R_square:  0.9654047634952677
-k = 2
-MSE:  365.2890294809699
-R_square:  0.9575030255620649
-MSE:  105.15007464036118
-R_square:  0.9851466845868053
 MSE:  86.87423890792964
 R_square:  0.9966843123481515
+
+##############################################################
+In prediction range 0 to 5
+MSE:  3.909617915946505
+R_square:  0.8828879264916406
+In prediction range 5 to 10
+MSE:  3.691180010233068
+R_square:  0.8888272495117766
+In prediction range 10 to 15
+MSE:  7.07510264026778
+R_square:  0.6407002833931954
+In prediction range 15 to 20
+MSE:  3.7349027178856016
+R_square:  0.9379843045341386
+In prediction range 20 to 25
+MSE:  8.223095617896787
+R_square:  0.9582313234896137
+In prediction range 25 to 30
+MSE:  6.573494869576427
+R_square:  0.9793852344864715
+In prediction range 30 to 35
+MSE:  6.411522179769304
+R_square:  0.9896507640224578
+In prediction range 35 to 40
+MSE:  7.904375076029212
+R_square:  0.9870685458057483
+
+##############################################################
+features_regr = [ADMISSION_LOCATION, DISCHARGE_LOCATION, MARITAL_STATUS, AGE, Service_count, icu_LOS]
+classOfLOS = [0, 30]
+===Test - Combined SVM SVR
+classOfLOSNum = [35816, 2151]
+===SVM
+class 0 accuracy: 0.9995810055865921
+class 1 accuracy: 0.5069124423963134
+Test accuracy: 0.971424809059784
