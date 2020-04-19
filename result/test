@@ -1,16 +1,100 @@
-start = ADMISSION_TYPE
-end = icu_LOS
+ADMISSION_TYPE  ADMISSION_LOCATION  DISCHARGE_LOCATION  INSURANCE  MARITAL_STATUS  GENDER  AGE  Service_count  icu_LOS
 feature importance:  [ 0.0159768   0.03707544  0.08168483  0.02778085  0.04484516  0.01649404  0.23289708  0.06799977  0.47524604]
+##############################################################
+===Test - SVR
+features = [ADMISSION_TYPE, MARITAL_STATUS, INSURANCE, GENDER, AGE, icu_LOS]
+MSE:  322.94263745456306
+R_square:  0.9904226707335657
 
+features = [ADMISSION_TYPE, AGE, Service_count, icu_LOS]
+kfold = 10
+k = 0
+MSE:  68.47189480826233
+R_square:  0.9964782713718974
+k = 1
+MSE:  66.20230988270932
+R_square:  0.9982221152347427
+...
+k = 4
+MSE:  83.31170938132992
+R_square:  0.9965040010171843
+
+##############################################################
+LOS classes:  [0, 5]
+classOfLOSNum:  [15654, 22313]
+===Test - SVM
+class[ 0 ] accuracy:  0.331523474928138
+class[ 1 ] accuracy:  0.949809545149003
+Overall accuracy:  0.6948907031867264
+
+##############################################################
+LOS classes:  [0, 10]
+classOfLOSNum:  [27117, 10850]
+===Test - SVM
+class[ 0 ] accuracy:  0.8154498525073747
+class[ 1 ] accuracy:  0.7585253456221198
+Overall accuracy:  0.7991835659731367
+
+##############################################################
+LOS classes:  [0, 5, 10]
+classOfLOSNum:  [15654, 11463, 10850]
+===Test - SVM
+class[ 0 ] accuracy:  0.6419674225487065
+class[ 1 ] accuracy:  0.45311818578281726
+class[ 2 ] accuracy:  0.7493087557603687
+Overall accuracy:  0.6156175928364498
+
+##############################################################
 classOfLOS = [0, 5,10,15,28]
 classOfLOSNum:  [15654, 11463, 4480, 3933, 2437]
-===Test1 - SVm
+===Test - SVM
+features = [ADMISSION_TYPE...icu_LOS]
 class[ 0 ] accuracy:  0.6187739463601533
 class[ 1 ] accuracy:  0.6155187445510026
 class[ 2 ] accuracy:  0.13616071428571427
 class[ 3 ] accuracy:  0.467005076142132
 class[ 4 ] accuracy:  0.5122950819672131
 Overall accuracy:  0.5382995525138194
+
+features = [ADMISSION_TYPE, INSURANCE, AGE, icu_LOS]
+class[ 0 ] accuracy:  0.6245210727969349
+class[ 1 ] accuracy:  0.6181342632955537
+class[ 2 ] accuracy:  0.13839285714285715
+class[ 3 ] accuracy:  0.4543147208121827
+class[ 4 ] accuracy:  0.5819672131147541
+Overall accuracy:  0.5448802316399053
+
+features = [MARITAL_STATUS, AGE, icu_LOS]
+class[ 0 ] accuracy:  0.611749680715198
+class[ 1 ] accuracy:  0.6198779424585876
+class[ 2 ] accuracy:  0.140625
+class[ 3 ] accuracy:  0.4467005076142132
+class[ 4 ] accuracy:  0.5245901639344263
+Overall accuracy:  0.5359305080284286
+
+features = [MARITAL_STATUS, INSURANCE, AGE, icu_LOS]
+class[ 0 ] accuracy:  0.6104725415070242
+class[ 1 ] accuracy:  0.6146469049694856
+class[ 2 ] accuracy:  0.14508928571428573
+class[ 3 ] accuracy:  0.4517766497461929
+class[ 4 ] accuracy:  0.5737704918032787
+Overall accuracy:  0.538036325348776
+
+features = [ADMISSION_TYPE, MARITAL_STATUS, INSURANCE, AGE, icu_LOS]
+class[ 0 ] accuracy:  0.6232439335887612
+class[ 1 ] accuracy:  0.6190061028770706
+class[ 2 ] accuracy:  0.14732142857142858
+class[ 3 ] accuracy:  0.45685279187817257
+class[ 4 ] accuracy:  0.5860655737704918
+Overall accuracy:  0.5461963674651223
+
+features = [ADMISSION_TYPE, MARITAL_STATUS, INSURANCE, GENDER, AGE, icu_LOS]
+class[ 0 ] accuracy:  0.6232439335887612
+class[ 1 ] accuracy:  0.6207497820401047
+class[ 2 ] accuracy:  0.14732142857142858
+class[ 3 ] accuracy:  0.45685279187817257
+class[ 4 ] accuracy:  0.5942622950819673
+Overall accuracy:  0.5472492761252962
 
 ===Test - MLP
 class[ 0 ] accuracy:  0.0
@@ -23,7 +107,7 @@ Overall accuracy:  0.30192155830481704
 
 ===Test - NN
 Accuracy: 0.41221374
-
+##############################################################
 classOfLOS = [0, 3, 5, 10, 20, 40]
 classOfLOSNum:  [7776, 7878, 11463, 6627, 2945, 1278]
 === Test1 - SVM
@@ -43,3 +127,399 @@ class[ 3 ] accuracy:  0.0
 class[ 4 ] accuracy:  0.0
 class[ 5 ] accuracy:  0.0
 Overall accuracy:  0.30192155830481704
+##############################################################
+0 <= LOS <= 20
+===Test - SVR
+k = 0
+MSE:  11.039160969240612
+R_square:  0.9443067922620657
+k = 1
+MSE:  11.294149354905604
+R_square:  0.9433844586367237
+k = 2
+MSE:  10.766771370207458
+R_square:  0.9448201217299822
+##############################################################
+0 <= LOS <= 70
+k = 0
+MSE:  46.50208504899997
+R_square:  0.9874859196712401
+k = 1
+MSE:  43.49465624890251
+R_square:  0.9884620933173581
+k = 2
+MSE:  44.97090165461954
+R_square:  0.987762221603618
+k = 3
+MSE:  40.700592957047306
+R_square:  0.9892040516053325
+
+##############################################################
+0 <= LOS <= 10
+===Test - SVR
+k = 0
+MSE:  3.9783307893402404
+R_square:  0.8781376947919138
+k = 1
+MSE:  3.855808863610821
+R_square:  0.8834211727960368
+k = 2
+MSE:  3.7998384977773436
+R_square:  0.886435027418222
+
+##############################################################
+10 <= LOS <= 30
+Total size:  8702
+===Test - SVR
+k = 0
+MSE:  22.407666020739363
+R_square:  0.46274078679746433
+k = 1
+MSE:  20.874139787044303
+R_square:  0.469784117573143
+k = 2
+MSE:  20.889147051558595
+R_square:  0.4880579997333039
+##############################################################
+30 <= LOS <= 50
+Total size:  1332
+===Test - SVR
+k = 0
+MSE:  20.829730220197483
+R_square:  0.9409891005280903
+k = 1
+MSE:  22.48996919742783
+R_square:  0.9383547289745576
+k = 2
+MSE:  24.80825146184699
+R_square:  0.9310063164649277
+##############################################################
+50 <= LOS <= 1000
+Total size:  819
+===Test - SVR
+k = 0
+MSE:  293.1028479908132
+R_square:  0.8861011169236765
+k = 1
+MSE:  365.3129190220572
+R_square:  0.9416161857201144
+k = 2
+MSE:  377.5919273314068
+R_square:  0.8622800543997877
+
+##############################################################
+30 <= LOS <= 10000
+Total size:  2151
+===Test - SVR
+k = 0
+MSE:  384.75288144126444
+R_square:  0.9547700527861084
+k = 1
+MSE:  258.52848927110733
+R_square:  0.9695623910941575
+k = 2
+MSE:  285.7780726235262
+R_square:  0.9810425812456456
+
+
+##############################################################
+classOfLOS = [0, 10, 30]
+classOfLOSNum:  [27117, 8699, 2151]
+===Test - SVM
+class[ 0 ] accuracy:  0.8399705014749262
+class[ 1 ] accuracy:  0.5528735632183908
+class[ 2 ] accuracy:  0.6620370370370371
+Overall accuracy:  0.7640863612427593
+
+##############################################################
+classOfLOS = [0, 10]
+classOfLOSNum:  [27117, 10850]
+===Test - SVM
+class[ 0 ] accuracy:  0.8108407079646017
+class[ 1 ] accuracy:  0.7483870967741936
+Overall accuracy:  0.7929944693178825
+
+##############################################################
+classOfLOS = [10, 30]
+classOfLOSNum:  [8702, 2151]
+===Test - SVM
+class[ 0 ] accuracy:  0.8978185993111366
+class[ 1 ] accuracy:  0.7777777777777778
+Overall accuracy:  0.8739650413983441
+
+##############################################################
+features = [ADMISSION_LOCATION, DISCHARGE_LOCATION, MARITAL_STATUS, AGE, Service_count, icu_LOS]
+===Test - Combined SVM SVR
+classOfLOSNum = [27117, 8699, 2151]
+===SVM
+Test accuracy: 0.8234132209639189
+===SVR
+SVR training set 0
+k = 0
+MSE:  3.850536318436069
+R_square:  0.8858154327384955
+k = 1
+MSE:  3.723610760387772
+R_square:  0.8872249168424923
+k = 2
+MSE:  3.823143052789931
+R_square:  0.8848471740368626
+MSE:  66.40283424367794
+R_square:  0.9975481163305953
+SVR training set 1
+k = 0
+MSE:  20.911432870028108
+R_square:  0.47930110410562066
+k = 1
+MSE:  20.808882735839482
+R_square:  0.4926606304718161
+k = 2
+MSE:  21.15235276282595
+R_square:  0.4782706415196879
+MSE:  182.43233054453708
+R_square:  0.9903429706428037
+SVR training set 2
+k = 0
+MSE:  310.6034027532744
+R_square:  0.9637327194249413
+k = 1
+MSE:  307.62765597406695
+R_square:  0.979467639264829
+k = 2
+MSE:  304.51935823254496
+R_square:  0.9640566045261919
+MSE:  123.62084054163294
+R_square:  0.9840842974076642
+MSE:  81.8074676107183
+R_square:  0.996883456137046
+
+##############################################################
+features = [ DISCHARGE_LOCATION, MARITAL_STATUS, AGE, Service_count, icu_LOS]
+===Test - Combined SVM SVR
+classOfLOSNum = [27117, 8699, 2151]
+===SVM
+Test accuracy: 0.8311825125098762
+===SVR
+SVR training set 0
+k = 0
+MSE:  3.9327534610009622
+R_square:  0.8811775524918256
+k = 1
+MSE:  3.8357579192437523
+R_square:  0.8854617039689926
+k = 2
+MSE:  3.834483201196321
+R_square:  0.8849313920659909
+MSE:  68.1526056819309
+R_square:  0.9974883679635216
+SVR training set 1
+k = 0
+MSE:  21.142857773759488
+R_square:  0.47028841313040937
+k = 1
+MSE:  20.834986888520376
+R_square:  0.49279453311778554
+k = 2
+MSE:  21.855638695328782
+R_square:  0.45138686496156066
+MSE:  186.81529664956176
+R_square:  0.9940549899601366
+SVR training set 2
+k = 0
+MSE:  236.64865722927757
+R_square:  0.9726798438804715
+k = 1
+MSE:  371.9368356790961
+R_square:  0.9558273588550991
+k = 2
+MSE:  261.47363301016156
+R_square:  0.969363241826118
+MSE:  67.6012867040411
+R_square:  0.9857068523993239
+MSE:  82.74876205433038
+R_square:  0.9977824490643384
+
+##############################################################
+features = [ MARITAL_STATUS, AGE, Service_count, icu_LOS]
+===Test - Combined SVM SVR
+classOfLOSNum = [27117, 8699, 2151]
+===SVM
+Test accuracy: 0.8290755859889386
+===SVR
+SVR training set 0
+k = 0
+MSE:  3.90197308344362
+R_square:  0.8826316493010725
+k = 1
+MSE:  3.835370007954105
+R_square:  0.8845858258646302
+k = 2
+MSE:  3.878834541561593
+R_square:  0.8826484561428753
+MSE:  58.09894974355625
+R_square:  0.9976255311606853
+SVR training set 1
+k = 0
+MSE:  23.26193710594085
+R_square:  0.41776695059168933
+k = 1
+MSE:  20.658077295605416
+R_square:  0.4696683266201459
+k = 2
+MSE:  20.620563745190715
+R_square:  0.49942979366740703
+MSE:  118.17962631204063
+R_square:  0.989875176990627
+SVR training set 2
+k = 0
+MSE:  366.112555075176
+R_square:  0.9757662359504691
+k = 1
+MSE:  305.85580562135846
+R_square:  0.9631584441307983
+k = 2
+MSE:  311.58548644211635
+R_square:  0.9633449145757838
+MSE:  111.25491990644436
+R_square:  0.9861153355169778
+MSE:  66.45592668001828
+R_square:  0.997399664211543
+
+
+##############################################################
+features = [MARITAL_STATUS, AGE, icu_LOS]
+===Test - Combined SVM SVR
+classOfLOSNum = [27117, 8699, 2151]
+===SVM
+Test accuracy: 0.8282854885435871
+===SVR
+SVR training set 0
+k = 0
+MSE:  3.829120444069167
+R_square:  0.8847863114479483
+k = 1
+MSE:  3.9158799808770346
+R_square:  0.8815329586099254
+k = 2
+MSE:  3.8745222270812207
+R_square:  0.8836763400825709
+MSE:  62.38973886254677
+R_square:  0.9974473702338428
+SVR training set 1
+k = 0
+MSE:  21.146428708298988
+R_square:  0.489095089652245
+k = 1
+MSE:  21.90578530676162
+R_square:  0.4573458682035715
+k = 2
+MSE:  21.83730755796026
+R_square:  0.4515979349128487
+MSE:  105.32058031197779
+R_square:  0.9801592945916846
+SVR training set 2
+k = 0
+MSE:  331.4766751734058
+R_square:  0.9605401522381501
+k = 1
+MSE:  354.8570081721306
+R_square:  0.9764326849489599
+k = 2
+MSE:  328.8946455902726
+R_square:  0.9614258279230969
+MSE:  88.52496496289397
+R_square:  0.9894014679725072
+MSE:  68.02441443565505
+R_square:  0.9974133011039233
+
+##############################################################
+features = [ AGE, icu_LOS]
+===Test - Combined SVM SVR
+classOfLOSNum = [27117, 8699, 2151]
+===SVM
+Test accuracy: 0.8371082433500132
+===SVR
+SVR training set 0
+k = 0
+MSE:  3.8258604020615024
+R_square:  0.8841513374484012
+k = 1
+MSE:  3.8881421843331196
+R_square:  0.8839869174980237
+k = 2
+MSE:  3.9285903831080113
+R_square:  0.8817552028516474
+MSE:  57.00511636516324
+R_square:  0.9944904030618322
+SVR training set 1
+k = 0
+MSE:  20.929436193759443
+R_square:  0.48214141635496566
+k = 1
+MSE:  22.21000788449101
+R_square:  0.4464862311522536
+k = 2
+MSE:  20.953168562016664
+R_square:  0.4860577004271195
+MSE:  144.8542175140456
+R_square:  0.9932137756789532
+SVR training set 2
+k = 0
+MSE:  377.9663952559065
+R_square:  0.9554196335928534
+k = 1
+MSE:  419.40920714338097
+R_square:  0.972212697609732
+k = 2
+MSE:  228.92681036023737
+R_square:  0.9717445577382426
+MSE:  47.606250818266176
+R_square:  0.9897605826041677
+MSE:  66.55753587273468
+R_square:  0.9974720566076636
+
+##############################################################
+features = [ icu_LOS]
+===Test - Combined SVM SVR
+classOfLOSNum = [27117, 8699, 2151]
+===SVM
+Test accuracy: 0.8091914669475903
+===SVR
+SVR training set 0
+k = 0
+MSE:  4.066622970989235
+R_square:  0.8767732405649764
+k = 1
+MSE:  4.018023406060529
+R_square:  0.8808013798988057
+k = 2
+MSE:  4.173129713203127
+R_square:  0.8742199630090913
+MSE:  76.24852380120605
+R_square:  0.997176426292705
+SVR training set 1
+k = 0
+MSE:  22.864065207096452
+R_square:  0.4408770098127688
+k = 1
+MSE:  22.250063333029768
+R_square:  0.4378764683780719
+k = 2
+MSE:  22.708568566335966
+R_square:  0.44900974672537897
+MSE:  172.18788660945577
+R_square:  0.9895771471067795
+SVR training set 2
+k = 0
+MSE:  299.5695602807903
+R_square:  0.980022963468483
+k = 1
+MSE:  297.00220461902546
+R_square:  0.9654047634952677
+k = 2
+MSE:  365.2890294809699
+R_square:  0.9575030255620649
+MSE:  105.15007464036118
+R_square:  0.9851466845868053
+MSE:  86.87423890792964
+R_square:  0.9966843123481515

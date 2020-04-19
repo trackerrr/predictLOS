@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import random
+
 #from sklearn.neural_network import MLPClassifier
 
 def NN (X_train, y_train, X_test, y_test, classOfLOS):
@@ -26,9 +27,9 @@ def NN (X_train, y_train, X_test, y_test, classOfLOS):
     training_epochs = 300
     display_step = 100
     batch_size = 100
-    learning_rate = 0.1
+    learning_rate = 0.001
     dropout = 0.1
-    n_hidden_1 = 100
+    n_hidden_1 = 200
     n_hidden_2 = n_hidden_1
     n_hidden_3 = n_hidden_1
     n_input = X_train.shape[1]
@@ -55,8 +56,8 @@ def NN (X_train, y_train, X_test, y_test, classOfLOS):
         layer_1 = tf.add(tf.matmul(X, weights['h1']), biases['b1'])
         #layer_2 = tf.add(tf.matmul(layer_1, weights['h2']), biases['b2'])
         #layer_3 = tf.add(tf.matmul(layer_2, weights['h3']), biases['b3'])
-        #layer_3 = tf.nn.relu(layer_3)
-        #layer_3 = tf.nn.dropout(layer_3, dropout)
+        layer_3 = tf.nn.relu(layer_1)
+        layer_3 = tf.nn.dropout(layer_1, dropout)
         out_layer = tf.matmul(layer_1, weights['out']) + biases['out']
         return out_layer
 
