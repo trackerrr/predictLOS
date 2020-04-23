@@ -15,3 +15,4 @@ def plot_map(x, y, x_label, y_label, title):
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.show()
+    plt.savefig(title)

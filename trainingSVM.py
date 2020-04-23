@@ -149,13 +149,31 @@ def combined_SVM_SVR (X, features_class, features_regr, LOS_pos, classOfLOS, tes
         regression_pred = clf.predict(X_test_sub)
         prediction = np.append(prediction, regression_pred)
         y_test_rearrange = np.append(y_test_rearrange, y_test_sub)
-
         test.testSVR(regression_pred, y_test_sub)
         plot.plot_map(y_test_sub, regression_pred, "y_test", "prediction", "regression subset")
 
     print("Overall:")
+    indices = []
+    for i in range(len(y_test_rearrange)):
+        if y_test_rearrange[i] <= 30:
+            indices.append(i)
+    prediction = np.array(prediction[indices])
+    y_test_rearrange = np.array(y_test_rearrange[indices])
     test.testSVR(prediction, y_test_rearrange)
     plot.plot_map(y_test_rearrange, prediction, "y_test", "prediction", "final regression result")
+
+    interval = 5
+    for i in range(classOfLOS[0], classOfLOS[len(classOfLOS) - 1], interval):
+        indices = []
+        for j in range(len(prediction)):
+            if y_test_rearrange[j] >= i and y_test_rearrange[j] <= i + interval:
+                indices.append(j)
+        y_test_rearrange_sub = np.array(y_test_rearrange[indices])
+        prediction_sub = np.array(prediction[indices])
+        print("class", i, "-", i + interval)
+        test.testSVR(prediction_sub, y_test_rearrange_sub)
+
+
 
 def cross_validation(X, y, kfold):
     kf = KFold(n_splits=kfold, shuffle=True)

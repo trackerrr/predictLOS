@@ -526,6 +526,26 @@ In prediction range 35 to 40
 MSE:  7.904375076029212
 R_square:  0.9870685458057483
 
+class 0 - 5
+MSE:  4.0506527090379185
+R_square:  0.2646554404613217
+class 5 - 10
+MSE:  4.1962987410720896
+R_square:  0.3588656580321752
+class 10 - 15
+MSE:  25.567471525812714
+R_square:  0.5340129305427794
+class 15 - 20
+MSE:  62.87139756613757
+R_square:  0.5811833398149753
+class 20 - 25
+MSE:  126.77041609916449
+R_square:  0.5715222138582012
+class 25 - 30
+MSE:  196.04268550986862
+R_square:  0.6138561196053687
+
+
 ##############################################################
 features_regr = [ADMISSION_LOCATION, DISCHARGE_LOCATION, MARITAL_STATUS, AGE, Service_count, icu_LOS]
 classOfLOS = [0, 30]
